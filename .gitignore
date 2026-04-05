@@ -46,3 +46,6 @@ venv/
 # Misc
 *.bak
 *.backup
+
+# Railway
+.railway/
