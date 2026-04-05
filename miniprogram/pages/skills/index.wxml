@@ -1,0 +1,67 @@
+<view class="skills-page">
+  <view class="header">
+    <view class="header-title">技能交换</view>
+    <view class="header-desc">连接技能，共创价值</view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab-item {{activeTab === 'offer' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="offer">
+      <image src="/assets/icons/skill-active.svg" mode="aspectFit" class="tab-icon"></image>
+      <text>我能提供</text>
+    </view>
+    <view class="tab-item {{activeTab === 'need' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="need">
+      <image src="/assets/icons/search.svg" mode="aspectFit" class="tab-icon"></image>
+      <text>我需要</text>
+    </view>
+    <view class="tab-item {{activeTab === 'project' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="project">
+      <image src="/assets/icons/package-active.svg" mode="aspectFit" class="tab-icon"></image>
+      <text>本地项目</text>
+    </view>
+  </view>
+
+  <view class="list-content">
+    <view class="post-card" wx:for="{{posts}}" wx:key="id" bindtap="onPostDetail" data-id="{{item.id}}">
+      <view class="post-header">
+        <image class="avatar" src="{{item.userAvatar || '/assets/icons/community.svg'}}"></image>
+        <view class="user-info">
+          <text class="nickname">{{item.userNickname}}</text>
+          <text class="time">{{item.createdAt}}</text>
+        </view>
+        <text class="reward-tag {{item.rewardType}}">{{rewardText[item.rewardType]}}</text>
+      </view>
+      <view class="post-title">{{item.title}}</view>
+      <view class="post-content">{{item.content}}</view>
+      <view class="post-tags">
+        <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+      </view>
+      <view class="post-footer">
+        <view class="match-suggest" wx:if="{{item.matchCount > 0}}" catchtap="onMatchSuggest" data-id="{{item.id}}">
+          <image src="/assets/icons/recommend.svg" mode="aspectFit" class="match-icon"></image>
+          <text>智能匹配 {{item.matchCount}} 人</text>
+        </view>
+        <view class="match-btn" catchtap="onMatch" data-id="{{item.id}}">
+          发起对接
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+
+    <view wx:if="{{!loading && posts.length === 0}}" class="empty-state">
+      <image src="/assets/icons/skill.svg" mode="aspectFit" class="empty-icon"></image>
+      <text>暂无内容</text>
+      <text class="empty-tip">点击右下角按钮发布第一条</text>
+    </view>
+
+    <view wx:if="{{!loading && noMore && posts.length > 0}}" class="no-more">
+      <text>没有更多了</text>
+    </view>
+  </view>
+
+  <view class="publish-btn" bindtap="onPublish">
+    <image src="/assets/icons/ai-assistant.svg" mode="aspectFit" class="publish-icon"></image>
+  </view>
+</view>

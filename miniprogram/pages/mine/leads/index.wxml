@@ -1,0 +1,35 @@
+<view class="leads-page">
+  <view class="lead-list">
+    <view class="lead-item" wx:for="{{leads}}" wx:key="id">
+      <view class="lead-header">
+        <text class="package-title">{{item.packageTitle}}</text>
+        <text class="status-tag {{item.status}}">{{statusText[item.status]}}</text>
+      </view>
+      <view class="lead-info">
+        <view class="info-row">
+          <text class="label">到达日期：</text>
+          <text>{{item.arrivalDate}}</text>
+        </view>
+        <view class="info-row">
+          <text class="label">停留时长：</text>
+          <text>{{item.stayDays}}天</text>
+        </view>
+        <view class="info-row">
+          <text class="label">人数：</text>
+          <text>{{item.peopleCount}}人</text>
+        </view>
+      </view>
+      <view class="lead-footer">
+        <text class="create-time">{{item.createdAt}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">
+    <text>加载中...</text>
+  </view>
+
+  <view wx:if="{{!loading && leads.length === 0}}" class="empty-state">
+    <text>暂无意向记录</text>
+  </view>
+</view>

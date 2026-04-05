@@ -1,0 +1,20 @@
+<view class="package-card" bindtap="onTap">
+  <image class="cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+  <view class="content">
+    <view class="title">{{item.title}}</view>
+    <view class="tags">
+      <text class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+    </view>
+    <view class="footer">
+      <view class="price">
+        <text class="price-label">¥</text>
+        <text class="price-value">{{item.priceMin}}</text>
+        <text class="price-unit">起</text>
+      </view>
+      <view class="reason" wx:if="{{item.reason}}">
+        <text class="reason-icon">荐</text>
+        <text class="reason-text">{{item.reason}}</text>
+      </view>
+    </view>
+  </view>
+</view>

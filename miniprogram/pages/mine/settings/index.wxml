@@ -1,0 +1,62 @@
+<view class="settings-page">
+  <view class="section">
+    <view class="section-title">个人资料</view>
+    <view class="form-item">
+      <text class="form-label">昵称</text>
+      <input class="form-input" value="{{profile.nickname}}" bindinput="onNicknameChange" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">来自城市</text>
+      <input class="form-input" placeholder="请输入" value="{{profile.cityFrom}}" bindinput="onCityChange" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">工作类型</text>
+      <picker mode="selector" range="{{workTypeOptions}}" range-key="label" value="{{workTypeIndex}}" bindchange="onWorkTypeChange">
+        <view class="form-value">{{workTypeOptions[workTypeIndex].label}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">技能标签</view>
+    <view class="tags-input">
+      <view class="tag-item" wx:for="{{profile.skills}}" wx:key="*this">
+        <text>{{item}}</text>
+        <text class="remove" bindtap="onRemoveSkill" data-index="{{index}}">×</text>
+      </view>
+      <input class="tag-input" placeholder="输入后回车添加" value="{{skillInput}}" bindinput="onSkillInput" bindconfirm="onAddSkill" maxlength="10" />
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">兴趣标签</view>
+    <view class="tags-input">
+      <view class="tag-item" wx:for="{{profile.interests}}" wx:key="*this">
+        <text>{{item}}</text>
+        <text class="remove" bindtap="onRemoveInterest" data-index="{{index}}">×</text>
+      </view>
+      <input class="tag-input" placeholder="输入后回车添加" value="{{interestInput}}" bindinput="onInterestInput" bindconfirm="onAddInterest" maxlength="10" />
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="menu-item" bindtap="onPrivacy">
+      <text class="menu-text">隐私设置</text>
+      <text class="iconfont icon-arrow-right"></text>
+    </view>
+    <view class="menu-item" bindtap="onNotification">
+      <text class="menu-text">通知设置</text>
+      <text class="iconfont icon-arrow-right"></text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="menu-item logout" bindtap="onLogout">
+      <text class="menu-text">退出登录</text>
+    </view>
+  </view>
+
+  <view class="save-section safe-area-bottom">
+    <button class="save-btn" bindtap="onSave" loading="{{saving}}">保存</button>
+  </view>
+</view>

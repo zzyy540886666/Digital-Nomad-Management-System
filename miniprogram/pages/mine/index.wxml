@@ -1,0 +1,73 @@
+<view class="mine-page">
+  <view class="user-card" bindtap="onEditProfile">
+    <image class="avatar" src="{{userInfo.avatarUrl || defaultAvatar}}" mode="aspectFill"></image>
+    <view class="user-info">
+      <view class="nickname">{{userInfo ? userInfo.nickname : '点击登录'}}</view>
+      <view class="user-desc">{{userInfo ? '欢迎回到河源数字游民社区' : '完善信息，开启数字游民之旅'}}</view>
+    </view>
+    <image class="arrow-icon" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+  </view>
+
+  <view class="stats-card">
+    <view class="stat-item" bindtap="onNavigateTo" data-url="/pages/mine/leads/index">
+      <view class="stat-num">{{stats.leads}}</view>
+      <view class="stat-label">意向</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="onNavigateTo" data-url="/pages/mine/events/index">
+      <view class="stat-num">{{stats.events}}</view>
+      <view class="stat-label">活动</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="onNavigateTo" data-url="/pages/mine/posts/index">
+      <view class="stat-num">{{stats.posts}}</view>
+      <view class="stat-label">发布</view>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item" bindtap="onNavigateTo" data-url="/pages/mine/matches/index">
+      <view class="stat-num">{{stats.matches}}</view>
+      <view class="stat-label">对接</view>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view class="menu-item" bindtap="onNavigateTo" data-url="/pages/mine/leads/index">
+      <image class="menu-icon" src="{{packageIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">我的旅居意向</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="menu-item" bindtap="onNavigateTo" data-url="/pages/mine/events/index">
+      <image class="menu-icon" src="{{calendarIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">我的活动报名</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="menu-item" bindtap="onNavigateTo" data-url="/pages/mine/posts/index">
+      <image class="menu-icon" src="{{fileIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">我的发布</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="menu-item last" bindtap="onNavigateTo" data-url="/pages/mine/matches/index">
+      <image class="menu-icon" src="{{usersIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">我的技能对接</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view class="menu-item" bindtap="onNavigateTo" data-url="/pages/mine/settings/index">
+      <image class="menu-icon" src="{{settingsIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">设置</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="menu-item" bindtap="onFeedback">
+      <image class="menu-icon" src="{{feedbackIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">意见反馈</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+    <view class="menu-item last" bindtap="onAbout">
+      <image class="menu-icon" src="{{infoIconUrl}}" mode="aspectFit"></image>
+      <text class="menu-text">关于我们</text>
+      <image class="menu-arrow" src="{{arrowRightUrl}}" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>

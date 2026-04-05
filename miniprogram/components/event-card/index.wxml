@@ -1,0 +1,29 @@
+<view class="event-card" bindtap="onTap">
+  <image class="cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+  <view class="content">
+    <view class="title">{{item.title}}</view>
+    <view class="info">
+      <view class="info-item">
+        <text class="iconfont icon-time"></text>
+        <text>{{item.startTime}}</text>
+      </view>
+      <view class="info-item">
+        <text class="iconfont icon-location"></text>
+        <text>{{item.venueName}}</text>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="status">
+        <text class="tag {{item.feeType === 'free' ? 'tag-free' : 'tag-paid'}}">
+          {{item.feeType === 'free' ? '免费' : '付费'}}
+        </text>
+        <text class="capacity" wx:if="{{item.capacity}}">
+          {{item.signupCount || 0}}/{{item.capacity}}人
+        </text>
+      </view>
+      <view class="reason" wx:if="{{item.reason}}">
+        <text class="reason-text">{{item.reason}}</text>
+      </view>
+    </view>
+  </view>
+</view>

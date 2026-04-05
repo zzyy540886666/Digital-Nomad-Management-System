@@ -1,0 +1,33 @@
+<view class="task-detail-page">
+  <view class="main-info">
+    <view class="task-category {{task.category}}">{{categoryText[task.category]}}</view>
+    <view class="task-title">{{task.title}}</view>
+    <view class="task-meta">
+      <view class="meta-item" wx:if="{{task.startTime}}">
+        <text class="iconfont icon-time"></text>
+        <text>{{task.startTime}} - {{task.endTime}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">任务描述</view>
+    <view class="section-content">
+      <text>{{task.description}}</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{task.requirements}}">
+    <view class="section-title">任务要求</view>
+    <view class="section-content">
+      <text>{{task.requirements}}</text>
+    </view>
+  </view>
+
+  <view class="footer-bar safe-area-bottom">
+    <view class="signup-btn {{isSignedUp ? 'signed' : ''}}" bindtap="onSignup">
+      <text wx:if="{{isSignedUp}}">已报名</text>
+      <text wx:else>报名参与</text>
+    </view>
+  </view>
+</view>

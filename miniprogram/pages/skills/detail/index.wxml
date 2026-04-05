@@ -1,0 +1,51 @@
+<view class="detail-page">
+  <view class="post-card">
+    <view class="post-header">
+      <image class="avatar" src="{{post.userAvatar}}"></image>
+      <view class="user-info">
+        <text class="nickname">{{post.userNickname}}</text>
+        <text class="time">{{post.createdAt}}</text>
+      </view>
+      <text class="reward-tag {{post.rewardType}}">{{rewardText[post.rewardType]}}</text>
+    </view>
+    <view class="post-title">{{post.title}}</view>
+    <view class="post-content">{{post.content}}</view>
+    <view class="post-tags">
+      <text class="tag" wx:for="{{post.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+    </view>
+    <view class="post-extra" wx:if="{{post.availableTime}}">
+      <text class="label">可用时间：</text>
+      <text>{{post.availableTime}}</text>
+    </view>
+  </view>
+
+  <view class="match-section" wx:if="{{candidates.length > 0}}">
+    <view class="section-title">智能匹配推荐</view>
+    <view class="candidate-list">
+      <view class="candidate-item" wx:for="{{candidates}}" wx:key="id" bindtap="onCandidateTap" data-item="{{item}}">
+        <image class="candidate-avatar" src="{{item.avatar}}"></image>
+        <view class="candidate-info">
+          <text class="candidate-name">{{item.nickname}}</text>
+          <text class="candidate-reason">{{item.reason}}</text>
+        </view>
+        <view class="match-score">{{item.score}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-bar safe-area-bottom">
+    <view class="action-btns">
+      <view class="action-btn" bindtap="onCollect">
+        <text class="iconfont icon-{{isCollected ? 'collected' : 'collect'}}"></text>
+        <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+      </view>
+      <view class="action-btn" bindtap="onShare">
+        <text class="iconfont icon-share"></text>
+        <text>分享</text>
+      </view>
+    </view>
+    <view class="match-btn" bindtap="onMatch">
+      发起对接
+    </view>
+  </view>
+</view>

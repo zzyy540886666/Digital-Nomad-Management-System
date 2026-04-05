@@ -1,0 +1,67 @@
+<view class="package-list-page">
+  <view class="header">
+    <view class="search-bar" bindtap="onSearch">
+      <image src="/assets/icons/search.svg" mode="aspectFit" class="search-icon"></image>
+      <text class="placeholder">搜索产品包...</text>
+    </view>
+  </view>
+
+  <view class="filters">
+    <scroll-view scroll-x class="filter-scroll">
+      <view class="filter-group">
+        <text class="filter-label">预算</text>
+        <view class="filter-item {{activeBudget === item.value ? 'active' : ''}}" 
+              wx:for="{{budgetOptions}}" wx:key="value"
+              bindtap="onFilterBudget" data-value="{{item.value}}">
+          {{item.label}}
+        </view>
+      </view>
+      <view class="filter-group">
+        <text class="filter-label">时长</text>
+        <view class="filter-item {{activeDuration === item.value ? 'active' : ''}}" 
+              wx:for="{{durationOptions}}" wx:key="value"
+              bindtap="onFilterDuration" data-value="{{item.value}}">
+          {{item.label}}
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="list-content">
+    <view class="package-card" wx:for="{{packages}}" wx:key="id" bindtap="onPackageDetail" data-id="{{item.id}}">
+      <image class="card-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+      <view class="card-body">
+        <text class="card-title">{{item.title}}</text>
+        <view class="card-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+        </view>
+        <view class="card-desc">{{item.description}}</view>
+        <view class="card-footer">
+          <view class="price">
+            <text class="price-symbol">¥</text>
+            <text class="price-value">{{item.priceMin}}</text>
+            <text class="price-unit">起/人</text>
+          </view>
+          <view class="duration">
+            <image src="/assets/icons/time.svg" mode="aspectFit" class="duration-icon"></image>
+            <text>{{item.duration}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:if="{{!loading && packages.length === 0}}" class="empty-state">
+      <image src="/assets/icons/package.svg" mode="aspectFit" class="empty-icon"></image>
+      <text>暂无产品包</text>
+    </view>
+    
+    <view wx:if="{{!loading && noMore && packages.length > 0}}" class="no-more">
+      <text>没有更多了</text>
+    </view>
+  </view>
+</view>

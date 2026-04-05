@@ -1,0 +1,89 @@
+/* ============================================
+   全局样式变量和配色方案
+   ============================================ */
+
+page {
+  /* 主色调 - 蓝色系 */
+  --primary-color: #4A90D9;
+  --primary-light: #6BA3E0;
+  --primary-dark: #2E6DB4;
+  --primary-lighter: rgba(74, 144, 217, 0.1);
+
+  /* 辅助色 */
+  --success-color: #52c41a;
+  --success-light: rgba(82, 196, 26, 0.1);
+  --warning-color: #faad14;
+  --warning-light: rgba(250, 173, 20, 0.1);
+  --error-color: #ff4d4f;
+  --error-light: rgba(255, 77, 79, 0.1);
+
+  /* 渐变色 */
+  --gradient-primary: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  --gradient-success: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+  --gradient-warning: linear-gradient(135deg, #fa8c16 0%, #d46b08 100%);
+  --gradient-purple: linear-gradient(135deg, #722ed1 0%, #531dab 100%);
+  --gradient-cyan: linear-gradient(135deg, #13c2c2 0%, #08979c 100%);
+  --gradient-pink: linear-gradient(135deg, #eb2f96 0%, #c41d7f 100%);
+  --gradient-gray: linear-gradient(135deg, #8c8c8c 0%, #595959 100%);
+
+  /* 基础色 */
+  --white: #ffffff;
+  --black: #000000;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-disabled: #999999;
+  --border-color: #f0f0f0;
+  --background: #f5f7fa;
+
+  /* 间距 */
+  --spacing-xs: 8rpx;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --spacing-xl: 40rpx;
+
+  /* 圆角 */
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 20rpx;
+  --radius-xl: 24rpx;
+  --radius-round: 50%;
+
+  /* 阴影 */
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8rpx 32rpx rgba(0, 0, 0, 0.08);
+
+  /* 导航图标背景色 */
+  --nav-package-bg: linear-gradient(135deg, #E6F4FF 0%, #BAE0FF 100%);
+  --nav-package-icon: #4A90D9;
+  --nav-event-bg: linear-gradient(135deg, #FFF7E6 0%, #FFE7BA 100%);
+  --nav-event-icon: #fa8c16;
+  --nav-guide-bg: linear-gradient(135deg, #F6FFED 0%, #D9F7BE 100%);
+  --nav-guide-icon: #52c41a;
+  --nav-skill-bg: linear-gradient(135deg, #FFF0F6 0%, #FFD6E7 100%);
+  --nav-skill-icon: #eb2f96;
+
+  /* 字体 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  background-color: var(--background);
+  box-sizing: border-box;
+}
+
+view, text, image, button, input, textarea, scroll-view {
+  box-sizing: border-box;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  line-height: inherit;
+}
+
+button::after {
+  border: none;
+}

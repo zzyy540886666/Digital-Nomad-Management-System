@@ -1,0 +1,73 @@
+<view class="package-detail-page">
+  <swiper class="banner" indicator-dots autoplay circular>
+    <swiper-item wx:for="{{package.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="main-info">
+    <view class="title">{{package.title}}</view>
+    <view class="tags">
+      <text class="tag" wx:for="{{package.tags}}" wx:key="*this">{{item}}</text>
+    </view>
+    <view class="price-row">
+      <view class="price">
+        <text class="label">¥</text>
+        <text class="value">{{package.priceMin}}</text>
+        <text class="unit">起</text>
+        <text class="original" wx:if="{{package.priceMax > package.priceMin}}">
+          ¥{{package.priceMax}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">套餐内容</view>
+    <view class="items-list">
+      <view class="item" wx:for="{{package.items}}" wx:key="id">
+        <view class="item-icon {{item.type}}">
+          <text class="iconfont icon-{{item.type}}"></text>
+        </view>
+        <view class="item-content">
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-desc">{{item.description}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">可选服务</view>
+    <view class="optional-list">
+      <view class="optional-item" wx:for="{{package.optionalServices}}" wx:key="id">
+        <text class="optional-name">{{item.name}}</text>
+        <text class="optional-price">+¥{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">价格说明</view>
+    <view class="price-info">
+      <text>{{package.priceNote || '价格根据入住时长和房型有所不同，具体以实际预订为准。'}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">预订须知</view>
+    <view class="notice">
+      <text>{{package.notice || '请提前3天预约，入住时请携带有效身份证件。'}}</text>
+    </view>
+  </view>
+
+  <view class="footer-bar safe-area-bottom">
+    <view class="contact-btn" bindtap="onContact">
+      <text class="iconfont icon-service"></text>
+      <text>咨询</text>
+    </view>
+    <view class="submit-btn" bindtap="onSubmitLead">
+      提交意向
+    </view>
+  </view>
+</view>

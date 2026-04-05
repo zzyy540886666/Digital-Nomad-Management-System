@@ -1,0 +1,201 @@
+.event-detail-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 140rpx;
+}
+
+.cover {
+  width: 100%;
+  height: 400rpx;
+}
+
+.main-info {
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+}
+
+.tags {
+  margin-top: 16rpx;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  font-size: 22rpx;
+  border-radius: 6rpx;
+  margin-right: 12rpx;
+}
+
+.tag.category {
+  background-color: rgba(74, 144, 217, 0.1);
+  color: #4A90D9;
+}
+
+.tag.fee.free {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: #52c41a;
+}
+
+.tag.fee.paid {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: #faad14;
+}
+
+.info-card {
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx 30rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-item .iconfont:first-child {
+  font-size: 40rpx;
+  color: #4A90D9;
+  margin-right: 20rpx;
+}
+
+.info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.info-value {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 6rpx;
+}
+
+.info-item .icon-arrow-right {
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+.section {
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.section-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+.section-content.notice {
+  background-color: #fffbe6;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  border-left: 6rpx solid #faad14;
+}
+
+.signup-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.signup-item {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  padding: 16rpx 0;
+}
+
+.avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.nickname {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.footer-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.action-btns {
+  display: flex;
+  margin-right: 20rpx;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.action-btn .iconfont {
+  font-size: 40rpx;
+  color: #666;
+}
+
+.action-btn text:last-child {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 4rpx;
+}
+
+.action-btn .icon-collected {
+  color: #faad14;
+}
+
+.signup-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  color: #fff;
+  text-align: center;
+  padding: 24rpx 0;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+}
+
+.signup-btn.signed {
+  background: #52c41a;
+}
+
+.signup-btn.full {
+  background: #ccc;
+}

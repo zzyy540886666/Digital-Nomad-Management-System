@@ -1,0 +1,58 @@
+<view class="lead-page">
+  <view class="form-section">
+    <view class="form-item">
+      <text class="form-label">到达日期</text>
+      <picker mode="date" value="{{form.arrivalDate}}" start="{{today}}" bindchange="onDateChange">
+        <view class="form-value {{form.arrivalDate ? '' : 'placeholder'}}">
+          {{form.arrivalDate || '请选择日期'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">停留时长</text>
+      <picker mode="selector" range="{{durationOptions}}" range-key="label" value="{{durationIndex}}" bindchange="onDurationChange">
+        <view class="form-value {{form.stayDays ? '' : 'placeholder'}}">
+          {{durationOptions[durationIndex].label}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">人数</text>
+      <input class="form-input" type="number" placeholder="请输入人数" value="{{form.peopleCount}}" bindinput="onPeopleChange" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">预算档位</text>
+      <picker mode="selector" range="{{budgetOptions}}" range-key="label" value="{{budgetIndex}}" bindchange="onBudgetChange">
+        <view class="form-value">
+          {{budgetOptions[budgetIndex].label}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">工作类型</text>
+      <picker mode="selector" range="{{workTypeOptions}}" range-key="label" value="{{workTypeIndex}}" bindchange="onWorkTypeChange">
+        <view class="form-value">
+          {{workTypeOptions[workTypeIndex].label}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">联系电话</text>
+      <input class="form-input" type="number" placeholder="请输入联系电话" value="{{form.contactPhone}}" bindinput="onPhoneChange" />
+    </view>
+
+    <view class="form-item full">
+      <text class="form-label">特殊需求</text>
+      <textarea class="form-textarea" placeholder="请描述您的特殊需求（选填）" value="{{form.note}}" bindinput="onNoteChange" maxlength="200" />
+    </view>
+  </view>
+
+  <view class="submit-section safe-area-bottom">
+    <button class="submit-btn" bindtap="onSubmit" loading="{{submitting}}">提交意向</button>
+  </view>
+</view>

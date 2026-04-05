@@ -1,0 +1,66 @@
+<view class="event-list-page">
+  <view class="header">
+    <view class="search-bar" bindtap="onSearch">
+      <image src="/assets/icons/search.svg" mode="aspectFit" class="search-icon"></image>
+      <text class="placeholder">搜索活动...</text>
+    </view>
+  </view>
+
+  <view class="filters">
+    <scroll-view scroll-x class="category-scroll">
+      <view class="category-item {{activeCategory === item.value ? 'active' : ''}}" 
+            wx:for="{{categoryOptions}}" wx:key="value"
+            bindtap="onFilterCategory" data-value="{{item.value}}">
+        {{item.label}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="list-content">
+    <view class="event-card" wx:for="{{events}}" wx:key="id" bindtap="onEventDetail" data-id="{{item.id}}">
+      <image class="card-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+      <view class="card-body">
+        <view class="card-header">
+          <text class="card-title">{{item.title}}</text>
+          <text class="status-tag {{item.feeType}}">{{item.feeType === 'free' ? '免费' : '付费'}}</text>
+        </view>
+        <view class="card-meta">
+          <view class="meta-item">
+            <image src="/assets/icons/time.svg" mode="aspectFit" class="meta-icon"></image>
+            <text>{{item.startTime}}</text>
+          </view>
+          <view class="meta-item">
+            <image src="/assets/icons/location.svg" mode="aspectFit" class="meta-icon"></image>
+            <text>{{item.venueName}}</text>
+          </view>
+        </view>
+        <view class="card-footer">
+          <view class="organizer">
+            <image class="avatar" src="{{item.organizerAvatar || '/assets/icons/community.svg'}}" mode="aspectFill"></image>
+            <text class="organizer-name">{{item.organizerName}}</text>
+          </view>
+          <view class="signup-info">
+            <text class="signup-count">{{item.signupCount}}人已报名</text>
+            <view class="capacity-bar">
+              <view class="capacity-fill" style="width: {{item.signupCount / item.capacity * 100}}%"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view wx:if="{{loading}}" class="loading">
+      <view class="loading-spinner"></view>
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:if="{{!loading && events.length === 0}}" class="empty-state">
+      <image src="/assets/icons/event.svg" mode="aspectFit" class="empty-icon"></image>
+      <text>暂无活动</text>
+    </view>
+    
+    <view wx:if="{{!loading && noMore && events.length > 0}}" class="no-more">
+      <text>没有更多了</text>
+    </view>
+  </view>
+</view>

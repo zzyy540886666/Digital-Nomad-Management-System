@@ -1,0 +1,78 @@
+<view class="event-detail-page">
+  <image class="cover" src="{{event.coverUrl}}" mode="aspectFill"></image>
+
+  <view class="main-info">
+    <view class="title">{{event.title}}</view>
+    <view class="tags">
+      <text class="tag category">{{categoryText}}</text>
+      <text class="tag fee {{event.feeType}}">{{event.feeType === 'free' ? '免费' : '付费'}}</text>
+    </view>
+  </view>
+
+  <view class="info-card">
+    <view class="info-item">
+      <text class="iconfont icon-time"></text>
+      <view class="info-content">
+        <text class="info-label">活动时间</text>
+        <text class="info-value">{{event.startTime}} - {{event.endTime}}</text>
+      </view>
+    </view>
+    <view class="info-item" bindtap="onNavigate">
+      <text class="iconfont icon-location"></text>
+      <view class="info-content">
+        <text class="info-label">活动地点</text>
+        <text class="info-value">{{event.venueName}}</text>
+      </view>
+      <text class="iconfont icon-arrow-right"></text>
+    </view>
+    <view class="info-item">
+      <text class="iconfont icon-user"></text>
+      <view class="info-content">
+        <text class="info-label">报名人数</text>
+        <text class="info-value">{{event.signupCount || 0}}/{{event.capacity || '不限'}}人</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">活动介绍</view>
+    <view class="section-content">
+      <rich-text nodes="{{event.description}}"></rich-text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{event.notice}}">
+    <view class="section-title">注意事项</view>
+    <view class="section-content notice">
+      <text>{{event.notice}}</text>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{signupList.length > 0}}">
+    <view class="section-title">已报名 ({{signupList.length}}人)</view>
+    <view class="signup-list">
+      <view class="signup-item" wx:for="{{signupList}}" wx:key="id">
+        <image class="avatar" src="{{item.userAvatar}}"></image>
+        <text class="nickname">{{item.userNickname}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer-bar safe-area-bottom">
+    <view class="action-btns">
+      <view class="action-btn" bindtap="onShare">
+        <text class="iconfont icon-share"></text>
+        <text>分享</text>
+      </view>
+      <view class="action-btn" bindtap="onCollect">
+        <text class="iconfont icon-{{isCollected ? 'collected' : 'collect'}}"></text>
+        <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+      </view>
+    </view>
+    <view class="signup-btn {{isSignedUp ? 'signed' : ''}} {{isFull ? 'full' : ''}}" bindtap="onSignup">
+      <text wx:if="{{isSignedUp}}">已报名</text>
+      <text wx:elif="{{isFull}}">已满员</text>
+      <text wx:else>立即报名</text>
+    </view>
+  </view>
+</view>

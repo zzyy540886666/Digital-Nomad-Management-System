@@ -1,0 +1,4 @@
+<!-- SVG 图标组件 -->
+<view class="svg-icon {{className}}" style="width: {{width}}; height: {{height}}; color: {{color}};">
+  <rich-text nodes="{{iconSvg}}"></rich-text>
+</view>

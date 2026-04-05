@@ -1,0 +1,176 @@
+<view class="home-page">
+  <!-- 头部搜索栏 -->
+  <view class="header">
+    <view class="header-top">
+      <view class="location" bindtap="onSelectCity">
+        <view class="location-icon">
+          <image src="{{locationIcon}}" mode="aspectFit" style="width: 32rpx; height: 32rpx;"></image>
+        </view>
+        <text class="city">{{city}}</text>
+        <view class="arrow-icon">
+          <image src="{{arrowDownIcon}}" mode="aspectFit" style="width: 24rpx; height: 24rpx;"></image>
+        </view>
+      </view>
+      <view class="search-bar" bindtap="onSearch">
+        <view class="search-icon">
+          <image src="{{searchIcon}}" mode="aspectFit" style="width: 32rpx; height: 32rpx;"></image>
+        </view>
+        <text class="placeholder">搜索旅居/活动/攻略</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="banner-section" wx:if="{{banners.length > 0}}">
+    <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}" circular="{{true}}" indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#fff">
+      <swiper-item wx:for="{{banners}}" wx:key="id">
+        <view class="banner-item" bindtap="onBannerTap" data-url="{{item.url}}">
+          <image class="banner-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+          <view class="banner-title">{{item.title}}</view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-entry">
+    <view class="entry-item" wx:for="{{quickEntries}}" wx:key="id" bindtap="onNavigateTo" data-url="{{item.url}}">
+      <view class="entry-icon" style="background: {{item.bgColor}};">
+        <image src="{{item.iconUrl}}" mode="aspectFit" style="width: 48rpx; height: 48rpx;"></image>
+      </view>
+      <text class="entry-text">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 居住：精选旅居包 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-title">居住</text>
+        <text class="section-subtitle">精选旅居套餐</text>
+      </view>
+      <view class="section-more" bindtap="onNavigateTo" data-url="/pages/packages/list/index">
+        <text>更多</text>
+        <image src="{{arrowRightUrl}}" mode="aspectFit" class="more-icon"></image>
+      </view>
+    </view>
+    <view class="package-scroll">
+      <view class="package-card" wx:for="{{packages}}" wx:key="id" bindtap="onPackageDetail" data-id="{{item.id}}">
+        <image class="package-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+        <view class="package-info">
+          <text class="package-title">{{item.title}}</text>
+          <view class="package-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+          </view>
+          <view class="package-footer">
+            <view class="price">
+              <text class="price-symbol">¥</text>
+              <text class="price-value">{{item.priceMin}}</text>
+              <text class="price-unit">起</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 生活：生活指引 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-title">生活</text>
+        <text class="section-subtitle">本地生活指引</text>
+      </view>
+      <view class="section-more" bindtap="onNavigateTo" data-url="/pages/guides/index">
+        <text>更多</text>
+        <image src="{{arrowRightUrl}}" mode="aspectFit" class="more-icon"></image>
+      </view>
+    </view>
+    <view class="guide-grid">
+      <view class="guide-item" wx:for="{{guides}}" wx:key="id" bindtap="onGuideDetail" data-type="{{item.type}}">
+        <view class="guide-icon" style="background: {{item.bgColor}}">
+          <image src="{{item.iconUrl}}" mode="aspectFit" style="width: 40rpx; height: 40rpx;"></image>
+        </view>
+        <text class="guide-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 社交：近期活动 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-title">社交</text>
+        <text class="section-subtitle">近期活动</text>
+      </view>
+      <view class="section-more" bindtap="onNavigateTo" data-url="/pages/events/list/index">
+        <text>更多</text>
+        <image src="{{arrowRightUrl}}" mode="aspectFit" class="more-icon"></image>
+      </view>
+    </view>
+    <view class="event-list">
+      <view class="event-card" wx:for="{{events}}" wx:key="id" bindtap="onEventDetail" data-id="{{item.id}}">
+        <image class="event-cover" src="{{item.coverUrl}}" mode="aspectFill"></image>
+        <view class="event-info">
+          <text class="event-title">{{item.title}}</text>
+          <view class="event-meta">
+            <view class="meta-item">
+              <image src="{{timeIconUrl}}" mode="aspectFit" class="meta-icon"></image>
+              <text>{{item.startTime}}</text>
+            </view>
+            <view class="meta-item">
+              <image src="{{locationIconUrl}}" mode="aspectFit" class="meta-icon"></image>
+              <text>{{item.venueName}}</text>
+            </view>
+          </view>
+          <view class="event-footer">
+            <view class="event-status">
+              <text class="status-tag {{item.feeType}}">{{item.feeType === 'free' ? '免费' : '付费'}}</text>
+              <text class="capacity" wx:if="{{item.capacity}}">{{item.signupCount || 0}}/{{item.capacity}}人</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 贡献：技能交换 -->
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title-wrap">
+        <text class="section-title">贡献</text>
+        <text class="section-subtitle">技能交换</text>
+      </view>
+      <view class="section-more" bindtap="onNavigateTo" data-url="/pages/skills/index">
+        <text>更多</text>
+        <image src="{{arrowRightUrl}}" mode="aspectFit" class="more-icon"></image>
+      </view>
+    </view>
+    <view class="post-list">
+      <view class="post-item" wx:for="{{posts}}" wx:key="id" bindtap="onPostDetail" data-id="{{item.id}}">
+        <view class="post-header">
+          <text class="post-type {{item.type}}">{{item.type === 'offer' ? '提供' : '求助'}}</text>
+          <text class="post-time">{{item.createdAt}}</text>
+        </view>
+        <text class="post-title">{{item.title}}</text>
+        <view class="post-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+          <text class="post-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加入社群 -->
+  <view class="section community-section">
+    <view class="community-card" bindtap="onNavigateTo" data-url="/pages/community/index">
+      <view class="community-content">
+        <view class="community-title">
+          <image src="{{communityIconUrl}}" mode="aspectFit" class="community-icon"></image>
+          <text>加入数字游民社群</text>
+        </view>
+        <text class="community-desc">与志同道合的游民一起交流、分享、成长</text>
+      </view>
+      <image src="{{arrowRightUrl}}" mode="aspectFit" class="arrow-right-icon"></image>
+    </view>
+  </view>
+</view>

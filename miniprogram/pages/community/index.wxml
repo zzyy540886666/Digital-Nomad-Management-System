@@ -1,0 +1,55 @@
+<view class="community-page">
+  <view class="section">
+    <view class="section-title">社群入口</view>
+    <view class="group-list">
+      <view class="group-item" wx:for="{{groups}}" wx:key="id">
+        <view class="group-info">
+          <text class="group-name">{{item.name}}</text>
+          <text class="group-desc">{{item.description}}</text>
+        </view>
+        <view class="join-btn" bindtap="onJoinGroup" data-item="{{item}}">
+          加入群聊
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">共建任务</text>
+      <text class="section-more" bindtap="onViewMoreTasks">更多</text>
+    </view>
+    <view class="task-list">
+      <view class="task-item" wx:for="{{tasks}}" wx:key="id" bindtap="onTaskDetail" data-id="{{item.id}}">
+        <view class="task-category {{item.category}}">
+          {{categoryText[item.category]}}
+        </view>
+        <view class="task-content">
+          <text class="task-title">{{item.title}}</text>
+          <text class="task-desc">{{item.description}}</text>
+        </view>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="rules-section">
+    <view class="rules-title">社群规则</view>
+    <view class="rules-content">
+      <text>1. 尊重每一位社群成员，友善交流</text>
+      <text>2. 禁止发布广告、垃圾信息</text>
+      <text>3. 积极参与社群活动，共同成长</text>
+      <text>4. 保护个人隐私，不泄露他人信息</text>
+    </view>
+  </view>
+</view>
+
+<view class="qr-modal" wx:if="{{showQrModal}}" catchtouchmove="preventMove">
+  <view class="qr-content">
+    <text class="qr-title">{{currentGroup.name}}</text>
+    <image class="qr-image" src="{{currentGroup.qrCodeUrl}}" mode="aspectFit"></image>
+    <text class="qr-tip">长按识别二维码加入群聊</text>
+    <text class="qr-close" bindtap="onCloseQrModal">关闭</text>
+  </view>
+</view>
+<view class="mask" wx:if="{{showQrModal}}" bindtap="onCloseQrModal"></view>

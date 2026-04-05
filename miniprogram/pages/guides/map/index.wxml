@@ -1,0 +1,43 @@
+<view class="map-page">
+  <view class="filter-bar">
+    <scroll-view scroll-x class="type-scroll">
+      <view class="type-item {{activeType === item.value ? 'active' : ''}}" 
+            wx:for="{{typeOptions}}" wx:key="value"
+            bindtap="onFilterType" data-value="{{item.value}}">
+        {{item.label}}
+      </view>
+    </scroll-view>
+  </view>
+
+  <map class="map" 
+       longitude="{{longitude}}" 
+       latitude="{{latitude}}" 
+       scale="{{scale}}"
+       markers="{{markers}}"
+       show-location
+       bindmarkertap="onMarkerTap"
+       bindregionchange="onRegionChange">
+  </map>
+
+  <view class="poi-list" wx:if="{{showList && pois.length > 0}}">
+    <view class="poi-item" wx:for="{{pois}}" wx:key="id" bindtap="onPoiDetail" data-id="{{item.id}}">
+      <view class="poi-icon {{item.type}}">
+        <text class="iconfont icon-{{item.type}}"></text>
+      </view>
+      <view class="poi-content">
+        <text class="poi-name">{{item.name}}</text>
+        <text class="poi-address">{{item.address}}</text>
+        <view class="poi-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+        </view>
+      </view>
+      <view class="poi-distance" wx:if="{{item.distance}}">
+        <text>{{item.distance}}m</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="toggle-btn" bindtap="onToggleList">
+    <text class="iconfont icon-{{showList ? 'map' : 'list'}}"></text>
+  </view>
+</view>

@@ -1,0 +1,63 @@
+<view class="publish-page">
+  <view class="form-section">
+    <view class="form-item">
+      <text class="form-label">类型</text>
+      <view class="type-options">
+        <view class="type-item {{form.type === 'offer' ? 'active' : ''}}" bindtap="onSelectType" data-type="offer">
+          我能提供
+        </view>
+        <view class="type-item {{form.type === 'need' ? 'active' : ''}}" bindtap="onSelectType" data-type="need">
+          我需要
+        </view>
+        <view class="type-item {{form.type === 'project' ? 'active' : ''}}" bindtap="onSelectType" data-type="project">
+          本地项目
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">标题</text>
+      <input class="form-input" placeholder="请输入标题" value="{{form.title}}" bindinput="onTitleChange" maxlength="50" />
+    </view>
+
+    <view class="form-item full">
+      <text class="form-label">详细描述</text>
+      <textarea class="form-textarea" placeholder="请详细描述您的技能/需求" value="{{form.content}}" bindinput="onContentChange" maxlength="500" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">技能标签</text>
+      <view class="tags-input">
+        <view class="tag-item" wx:for="{{form.tags}}" wx:key="*this">
+          <text>{{item}}</text>
+          <text class="remove" bindtap="onRemoveTag" data-index="{{index}}">×</text>
+        </view>
+        <input class="tag-input" placeholder="输入后回车添加" value="{{tagInput}}" bindinput="onTagInput" bindconfirm="onAddTag" maxlength="10" />
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">期望回报</text>
+      <view class="reward-options">
+        <view class="reward-item {{form.rewardType === 'swap' ? 'active' : ''}}" bindtap="onSelectReward" data-reward="swap">
+          技能互换
+        </view>
+        <view class="reward-item {{form.rewardType === 'paid' ? 'active' : ''}}" bindtap="onSelectReward" data-reward="paid">
+          有偿服务
+        </view>
+        <view class="reward-item {{form.rewardType === 'volunteer' ? 'active' : ''}}" bindtap="onSelectReward" data-reward="volunteer">
+          志愿帮助
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">可用时间</text>
+      <input class="form-input" placeholder="如：周末、工作日晚上" value="{{form.availableTime}}" bindinput="onTimeChange" maxlength="50" />
+    </view>
+  </view>
+
+  <view class="submit-section safe-area-bottom">
+    <button class="submit-btn" bindtap="onSubmit" loading="{{submitting}}">发布</button>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<view class="guide-card" bindtap="onTap">
+  <view class="icon-wrapper {{item.type}}">
+    <text class="iconfont icon-{{item.type}}"></text>
+  </view>
+  <view class="name">{{item.name}}</view>
+</view>

@@ -1,0 +1,26 @@
+<view class="matches-page">
+  <view class="tabs">
+    <view class="tab-item {{activeTab === 'sent' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="sent">我发起的</view>
+    <view class="tab-item {{activeTab === 'received' ? 'active' : ''}}" bindtap="onSwitchTab" data-tab="received">我收到的</view>
+  </view>
+  <view class="match-list">
+    <view class="match-item" wx:for="{{matches}}" wx:key="id">
+      <image class="avatar" src="{{item.userAvatar}}"></image>
+      <view class="content">
+        <view class="header">
+          <text class="nickname">{{item.userNickname}}</text>
+          <text class="status-tag {{item.status}}">{{statusText[item.status]}}</text>
+        </view>
+        <text class="post-title">{{item.postTitle}}</text>
+        <text class="message">{{item.message}}</text>
+        <text class="time">{{item.createdAt}}</text>
+      </view>
+      <view class="actions" wx:if="{{activeTab === 'received' && item.status === 'sent'}}">
+        <view class="action-btn accept" bindtap="onAccept" data-id="{{item.id}}">接受</view>
+        <view class="action-btn reject" bindtap="onReject" data-id="{{item.id}}">拒绝</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading"><text>加载中...</text></view>
+  <view wx:if="{{!loading && matches.length === 0}}" class="empty-state"><text>暂无对接记录</text></view>
+</view>

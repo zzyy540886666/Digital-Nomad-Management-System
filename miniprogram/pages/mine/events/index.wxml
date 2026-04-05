@@ -1,0 +1,16 @@
+<view class="events-page">
+  <view class="event-list">
+    <view class="event-item" wx:for="{{events}}" wx:key="id" bindtap="onEventDetail" data-id="{{item.eventId}}">
+      <image class="cover" src="{{item.eventCoverUrl}}" mode="aspectFill"></image>
+      <view class="content">
+        <text class="title">{{item.eventTitle}}</text>
+        <view class="info">
+          <text class="time">{{item.eventStartTime}}</text>
+        </view>
+        <text class="status-tag {{item.status}}">{{statusText[item.status]}}</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading"><text>加载中...</text></view>
+  <view wx:if="{{!loading && events.length === 0}}" class="empty-state"><text>暂无活动记录</text></view>
+</view>

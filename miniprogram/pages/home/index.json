@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "数字游民旅居",
+  "usingComponents": {
+    "package-card": "/components/package-card/index",
+    "event-card": "/components/event-card/index",
+    "guide-card": "/components/guide-card/index"
+  }
+}

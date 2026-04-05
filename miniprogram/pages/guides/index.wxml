@@ -1,0 +1,56 @@
+<view class="guides-page">
+  <view class="ai-entry" bindtap="onOpenChat">
+    <view class="ai-icon">
+      <text class="iconfont icon-ai"></text>
+    </view>
+    <view class="ai-info">
+      <text class="ai-title">AI旅居助手</text>
+      <text class="ai-desc">问我任何关于河源旅居的问题</text>
+    </view>
+    <text class="iconfont icon-arrow-right"></text>
+  </view>
+
+  <view class="guide-cards">
+    <view class="guide-card" wx:for="{{guides}}" wx:key="id" bindtap="onGuideDetail" data-type="{{item.type}}">
+      <view class="card-icon {{item.type}}">
+        <text class="iconfont icon-{{item.type}}"></text>
+      </view>
+      <view class="card-content">
+        <text class="card-title">{{item.name}}</text>
+        <text class="card-desc">{{item.description}}</text>
+      </view>
+      <text class="iconfont icon-arrow-right"></text>
+    </view>
+  </view>
+
+  <view class="map-entry" bindtap="onOpenMap">
+    <text class="iconfont icon-map"></text>
+    <text>查看地图点位</text>
+  </view>
+
+  <view class="chat-modal" wx:if="{{showChat}}" catchtouchmove="preventMove">
+    <view class="chat-header">
+      <text class="chat-title">AI旅居助手</text>
+      <text class="iconfont icon-close" bindtap="onCloseChat"></text>
+    </view>
+    <scroll-view class="chat-content" scroll-y scroll-into-view="{{scrollToView}}">
+      <view class="message {{item.role}}" wx:for="{{messages}}" wx:key="id" id="msg-{{index}}">
+        <view class="msg-content">
+          <text>{{item.content}}</text>
+        </view>
+        <view class="citations" wx:if="{{item.citations && item.citations.length > 0}}">
+          <view class="citation" wx:for="{{item.citations}}" wx:for-item="cite" wx:key="id" bindtap="onCitationTap" data-citation="{{cite}}">
+            <text class="citation-title">{{cite.title}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="chat-input">
+      <input class="input" placeholder="输入您的问题..." value="{{inputValue}}" bindinput="onInputChange" confirm-type="send" bindconfirm="onSend" />
+      <view class="send-btn" bindtap="onSend">
+        <text class="iconfont icon-send"></text>
+      </view>
+    </view>
+  </view>
+  <view class="mask" wx:if="{{showChat}}" bindtap="onCloseChat"></view>
+</view>

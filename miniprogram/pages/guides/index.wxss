@@ -1,0 +1,278 @@
+.guides-page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 24rpx;
+}
+
+.ai-entry {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+}
+
+.ai-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.ai-icon .iconfont {
+  font-size: 40rpx;
+  color: #fff;
+}
+
+.ai-info {
+  flex: 1;
+}
+
+.ai-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.ai-desc {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 6rpx;
+}
+
+.ai-entry .icon-arrow-right {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 32rpx;
+}
+
+.guide-cards {
+  background-color: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.guide-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.guide-card:last-child {
+  border-bottom: none;
+}
+
+.card-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+
+.card-icon .iconfont {
+  font-size: 40rpx;
+  color: #fff;
+}
+
+.card-icon.network {
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+}
+
+.card-icon.transport {
+  background: linear-gradient(135deg, #52c41a 0%, #3da00f 100%);
+}
+
+.card-icon.medical {
+  background: linear-gradient(135deg, #ff4d4f 0%, #cf1322 100%);
+}
+
+.card-icon.food {
+  background: linear-gradient(135deg, #faad14 0%, #d48806 100%);
+}
+
+.card-icon.cowork {
+  background: linear-gradient(135deg, #722ed1 0%, #531dab 100%);
+}
+
+.card-icon.stay {
+  background: linear-gradient(135deg, #13c2c2 0%, #08979c 100%);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.guide-card .icon-arrow-right {
+  color: #ccc;
+  font-size: 28rpx;
+}
+
+.map-entry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-top: 24rpx;
+}
+
+.map-entry .iconfont {
+  font-size: 36rpx;
+  color: #4A90D9;
+  margin-right: 12rpx;
+}
+
+.map-entry text:last-child {
+  font-size: 28rpx;
+  color: #4A90D9;
+}
+
+.chat-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 70vh;
+  background-color: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.chat-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.chat-header .icon-close {
+  font-size: 36rpx;
+  color: #999;
+}
+
+.chat-content {
+  flex: 1;
+  padding: 20rpx 30rpx;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 20rpx;
+}
+
+.message.user {
+  text-align: right;
+}
+
+.message.user .msg-content {
+  background-color: #4A90D9;
+  color: #fff;
+}
+
+.message.assistant .msg-content {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.msg-content {
+  display: inline-block;
+  padding: 20rpx 24rpx;
+  border-radius: 16rpx;
+  max-width: 80%;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.citations {
+  margin-top: 12rpx;
+}
+
+.citation {
+  display: inline-block;
+  background-color: #e6f7ff;
+  padding: 10rpx 16rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-top: 8rpx;
+}
+
+.citation-title {
+  font-size: 24rpx;
+  color: #1890ff;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid #f0f0f0;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.input {
+  flex: 1;
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  padding: 16rpx 24rpx;
+  font-size: 28rpx;
+}
+
+.send-btn {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #4A90D9 0%, #357ABD 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+
+.send-btn .iconfont {
+  font-size: 36rpx;
+  color: #fff;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}

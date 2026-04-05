@@ -1,0 +1,99 @@
+.event-card {
+  display: flex;
+  background-color: #fff;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.event-card:last-child {
+  border-bottom: none;
+}
+
+.cover {
+  width: 180rpx;
+  height: 140rpx;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.info {
+  margin-top: 10rpx;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 6rpx;
+}
+
+.info-item .iconfont {
+  font-size: 28rpx;
+  color: #999;
+  margin-right: 8rpx;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+}
+
+.tag {
+  padding: 4rpx 12rpx;
+  border-radius: 4rpx;
+  font-size: 22rpx;
+  margin-right: 12rpx;
+}
+
+.tag-free {
+  background-color: rgba(82, 196, 26, 0.1);
+  color: #52c41a;
+}
+
+.tag-paid {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: #faad14;
+}
+
+.capacity {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.reason {
+  background-color: #e6f7ff;
+  padding: 6rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.reason-text {
+  font-size: 22rpx;
+  color: #1890ff;
+}

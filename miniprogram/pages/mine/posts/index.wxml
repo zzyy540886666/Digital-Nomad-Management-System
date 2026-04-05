@@ -1,0 +1,14 @@
+<view class="posts-page">
+  <view class="post-list">
+    <view class="post-item" wx:for="{{posts}}" wx:key="id" bindtap="onPostDetail" data-id="{{item.id}}">
+      <view class="post-header">
+        <text class="type-tag {{item.type}}">{{typeText[item.type]}}</text>
+        <text class="status-tag {{item.status}}">{{statusText[item.status]}}</text>
+      </view>
+      <text class="post-title">{{item.title}}</text>
+      <text class="create-time">{{item.createdAt}}</text>
+    </view>
+  </view>
+  <view wx:if="{{loading}}" class="loading"><text>加载中...</text></view>
+  <view wx:if="{{!loading && posts.length === 0}}" class="empty-state"><text>暂无发布记录</text></view>
+</view>
