@@ -22,15 +22,17 @@ db.conn_successful = false
 
 db.getConnection((err, connection) => {
   if (err) {
-    console.log(`数据库连接失败！！！！`)
+    console.log('数据库连接失败！！！！')
     console.log(` -> host: ${host}`)
     console.log(` -> port: ${port}`)
     console.log(` -> user: ${user}`)
     console.log(` -> password: ${pswd}`)
     console.log(` -> database: ${database}`)
-    process.exit(1)
+    console.log('\n⚠️  警告：应用将继续运行，但数据库功能将不可用')
+    console.log('💡 提示：请配置 DN_HOST, DN_PORT, DN_USER, DN_PSWD, DN_DB 环境变量')
+    db.conn_successful = false
   } else {
-    console.log('数据库连接成功！  数据库进程id为: ' + connection.threadId)
+    console.log('数据库连接成功！  数据库进程 id 为：' + connection.threadId)
     db.conn_successful = true
     connection.release()
   }
@@ -43,7 +45,7 @@ function get_db_info() {
     if (v) {
       res[i] = v
     } else {
-      console.log(`读取不到系统环境变量: ${project_name}_${tmp[i]} -> 使用默认值: ${default_db[i]}`)
+      console.log(`读取不到系统环境变量：${project_name}_${tmp[i]} -> 使用默认值：${default_db[i]}`)
       res[i] = default_db[i]
     }
   })
